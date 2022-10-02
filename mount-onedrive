@@ -9,11 +9,11 @@ START=99
 STOP=4
 
 start() {
-        rclone mkdir /tmp/OneDrive
-        rclone mount "OneDrive:/Scanned Documents/" /tmp/OneDrive/ --use-mmap --buffer-size 0 --cache-dir /tmp --vfs-cache-mode writes --vfs-cache-max-age 0s --umask 000 --allow-other --daemon
+        rclone mkdir /var/run/OneDrive
+        rclone mount "OneDrive:/Scanned Documents/" /var/run/OneDrive/ --use-mmap --buffer-size 0 --cache-dir /tmp --vfs-cache-mode writes --vfs-cache-max-age 0s --umask 000 --allow-other --daemon
 }
 
 stop() {
-        fusermount -zu /tmp/OneDrive
-        rclone rmdir /tmp/OneDrive
+        fusermount -zu /var/run/OneDrive
+        rclone rmdir /var/run/OneDrive
 }
